@@ -1,27 +1,50 @@
-function createGame(player1, situation, player2, player3, player4) {
+function createFinal(player1, situation, player2, score) {
+  return `  <li>
+              <img
+                src="./assets/icon=${player1}.svg"
+                alt="${player1}'s Flag"
+              />
+              <strong> ${situation} </strong>
+              <img
+                src="./assets/icon=${player2}.svg"
+                alt="${player2}'s Flag"/>
+              <p><strong> ${score} </strong></p>
+              </li>
+  `
+}
+
+function createGame(
+  player1,
+  situation,
+  player2,
+  player3,
+  player4,
+  score1,
+  score2
+) {
   return `
          <li>
               <img
-                src="./assets/icon-${player1}.svg"
+                src="./assets/icon=${player1}.svg"
                 alt="${player1}'s Flag"
-              /><!--Bandeira 1-->
+              />
               <strong> ${situation} </strong>
               <img
-                src="./assets/icon-${player2}.svg"
+                src="./assets/icon=${player2}.svg"
                 alt="${player2}'s Flag"/>
-              <p><strong> 3 x 1 </strong></p>
+              <p><strong> ${score1} </strong></p>
               </li>
             <li>
               <img
-                src="./assets/icon-${player3}.svg"
+                src="./assets/icon=${player3}.svg"
                 alt=" ${player3}'s flag"
-              /><!--Bandeira 1-->
+              />
               <strong> ${situation} </strong>
               <img
-                src="./assets/icon-${player4}.svg"
+                src="./assets/icon=${player4}.svg"
                 alt="${player4}'s Flag"
               />
-              <p><strong> 4 x 1</strong></p>
+              <p><strong> ${score2} </strong></p>
             </li>
  `
 }
@@ -50,9 +73,34 @@ document.querySelector("#app").innerHTML = `
             "Encerrado",
             "japan",
             "brazil",
-            "south-korea"
+            "south korea",
+            "3 X 1",
+            "4 X 1"
           )
         )} 
-        ${createCard("06/12/22", "terça")}
+        ${createCard(
+          "09/12/22",
+          "terça",
+          createGame(
+            "brazil",
+            "Encerrado",
+            "croatia",
+            "netherlands",
+            "argentina",
+            "2 X 4",
+            "3 X 4  "
+          )
+        )}
+        ${createCard(
+          "18/12/22",
+          "domingo",
+          createFinal(
+            "argentina",
+           "Encerrado",
+            "france",
+             "4 X 2"
+          )
+        )}
+
       </main>
 `
