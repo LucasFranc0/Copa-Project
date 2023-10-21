@@ -6,15 +6,35 @@
 
 body {
   background-color: #121214;
-  background-image: url(./assets/bg.svg);
-  background-position-x: center;
-  background-position-y: -715px;
+  background-image: var(--bg);
+  background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 body * {
   font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --card-title-border-color: #746615;
+  --card-color-primary: #f7dd43;
+  --card-bg-color: #1d1c19;
+  --bg: url(./assets/bg-yellow.svg)
+}
+
+body.blue {
+  --card-title-border-color: #338af3;
+  --card-color-primary: #338af3;
+  --card-bg-color: #202024;
+  --bg: url(./assets/bg-blue.svg)
+}
+
+body.green {
+  --card-title-border-color: #2fb64c;
+  --card-color-primary: #2fb64c;
+  --card-bg-color: #1a1f1b;
+  --bg: url(./assets/bg-green.svg)
 }
 
 ul {
@@ -29,6 +49,7 @@ ul {
 header {
   margin-bottom: 63px;
   text-align: center;
+  animation: appear 8s;
 }
 
 #cards {
@@ -40,19 +61,25 @@ header {
 .card {
   padding: 32px 23px;
   text-align: center;
-  background: #1d1c19;
-  border-bottom: 2px solid #f7dd43;
+  background: var(--card-bg-color);
+  border-bottom: 2px solid var(--card-color-primary);
   border-radius: 6px;
+  animation: appear 5s;
+}
+
+.situation {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .card p {
-  padding-left: 20px;
+  padding-left: 25px;
 }
 
 .card h2 {
   display: flex;
   padding: 8px 16px;
-  border: 1px solid #746615;
+  border: 1px solid var(--card-title-border-color);
   width: fit-content;
   justify-content: center;
   align-items: center;
@@ -96,4 +123,29 @@ header {
 .card ul li + li {
   padding-top: 24px;
   border-top: 1px solid #323238;
+}
+
+.card ul li img:hover,
+.card ul li strong:hover,
+.card ul li p:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s;
+}
+
+@keyframes appear {
+  0% {
+    transform: translatey(-715px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 1200px) {
+  #cards {
+    max-width: 1100px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
